@@ -7,6 +7,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import font
 import winsound
+import datetime
 
 def clock():
     total_seconds = calendar.timegm(time.gmtime())
@@ -30,10 +31,11 @@ def clock():
     print(current_hour , ":" , current_minute , ":" , current_second)
     
 
-    if current_hour <=12:
+    if current_hour >=12:
         tag="PM"
     else:
         tag="AM"
+    
     timex = str(current_hour) + ":" + str(current_minute) + ":" + str(current_second) + tag
     return timex
 
@@ -44,13 +46,14 @@ def show_time():
     txt.set(time)
     root.after(1000, show_time)
 
+
 root = Tk()
 root.attributes("-fullscreen", True)
-root.configure(background='teal')
+root.configure(background="black")
 root.bind("x", quit)
 root.after(1000, show_time)
-fnt=font.Font(family='Pixel', size=60, weight='bold')
-txt=StringVar()
-lbl=ttk.Label(root, textvariable=txt, font=txt, foreground='blue', background="teal")
+fnt = font.Font(family='Helvetica', size=250, weight='bold')
+txt = StringVar()
+lbl = ttk.Label(root, textvariable=txt, font=fnt, foreground="green", background="black")
 lbl.place(relx=0.5, rely=0.5, anchor=CENTER)
 root.mainloop()
